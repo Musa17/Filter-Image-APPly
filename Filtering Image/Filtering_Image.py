@@ -31,6 +31,24 @@ def median_filter(data, filter_size):
 
 def main():
 
-    return
+    print ("Please wait a little bit ...")
+    img = cv2.imread('Pikachu.jpg')
+
+    b, g, r = cv2.split(img)
+    arr = numpy.array(b)/255
+    Blue = median_filter(arr, 3) 
+
+    arr = numpy.array(g)/255
+    Green = median_filter(arr, 3)
+
+    arr = numpy.array(r)/255
+    Red = median_filter(arr, 3)	
+
+    filteredImage = cv2.merge((Blue, Green, Red))
+
+    cv2.namedWindow('Filtered Image')
+    cv2.imshow('Filtered Image', filteredImage)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 main()
